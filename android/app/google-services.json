@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "496805104117",
+    "project_id": "chems-pet-certus",
+    "storage_bucket": "chems-pet-certus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496805104117:android:bd46ad22b8503d9681f8bc",
+        "android_client_info": {
+          "package_name": "com.example.chems_pet_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496805104117-751v6centgk055vup6sr9ev3qs6gp4p5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chems_pet_app",
+            "certificate_hash": "5cc6668271b56d5b812352ec47525a83cdba3ba5"
+          }
+        },
+        {
+          "client_id": "496805104117-jb6j1l5qrh3sqmhlh7v74l2i9tkmsodk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmZ_QeeVA9ROrajfdV8O7gHz7eylLEeJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496805104117-jb6j1l5qrh3sqmhlh7v74l2i9tkmsodk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
