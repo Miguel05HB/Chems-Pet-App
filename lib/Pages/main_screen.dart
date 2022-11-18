@@ -22,33 +22,6 @@ class _MaterialYouState extends State<MaterialYou> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Chems Pet"),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.shopping_cart_rounded,
-              size: 30,
-            ),
-          ),
-        ],
-        toolbarHeight: 65,
-        elevation: 0.0,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xFF2A2323),
-                Color(0xFF1E1216),
-              ],
-              begin: Alignment.bottomLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-      ),
       body: Center(
         child: pages[_currentIndex],
       ),

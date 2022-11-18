@@ -41,7 +41,7 @@ class BodySections extends StatelessWidget {
                       const SizedBox(
                         height: 10 / 2,
                       ),
-                      cartButton(product: product),
+                      //cartButton(product: product),
                       const SizedBox(
                         height: 10 / 2,
                       ),

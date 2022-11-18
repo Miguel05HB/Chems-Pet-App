@@ -1,12 +1,15 @@
 // ignore_for_file: deprecated_member_use, avoid_print
+
 import 'package:chems_pet_app/Pages/main_screen.dart';
+import 'package:chems_pet_app/api/carrito_compras.dart';
 import 'package:chems_pet_app/providers/token_notifications.dart';
-import 'package:chems_pet_app/screens/autentication_screen.dart';
+import 'package:chems_pet_app/screens/auth_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:provider/provider.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'Canal_de_alta_importancia',
@@ -38,7 +41,10 @@ Future<void> main() async {
     sound: true,
   );
 
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => CarritoCompras(),
+    child: MyApp(),
+  ));
 }
 
 Future init() async {
@@ -114,16 +120,15 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: navigatorKey,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.black,
-      ),
-      home: MainScreen(),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        //scaffoldMessengerKey: Utils.messengerKey,
+        navigatorKey: navigatorKey,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.black,
+        ),
+        home: MainScreen(),
+      );
 }
 
 class MainScreen extends StatelessWidget {
@@ -143,7 +148,7 @@ class MainScreen extends StatelessWidget {
             } else if (snapshot.hasData) {
               return MaterialYou();
             } else {
-              return AutenticationScreen();
+              return const AuthPage();
             }
           },
         ),

@@ -1,22 +1,26 @@
+import 'dart:ui';
+
 import 'package:chems_pet_app/main.dart';
-import 'package:flutter/material.dart';
+import 'package:chems_pet_app/screens/show_confirm.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatefulWidget {
-  final VoidCallback onClickedSignIn;
+class SignUpWidget extends StatefulWidget {
+  final Function() onClickedSignIn;
 
-  const SignUpScreen({
+  const SignUpWidget({
     Key? key,
     required this.onClickedSignIn,
   }) : super(key: key);
 
   @override
-  State<SignUpScreen> createState() => _LoginState();
+  State<SignUpWidget> createState() => _SignUpWidgetState();
 }
 
-class _LoginState extends State<SignUpScreen> {
-  final _claveForm = GlobalKey<FormState>();
+class _SignUpWidgetState extends State<SignUpWidget> {
+  final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -29,11 +33,9 @@ class _LoginState extends State<SignUpScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Form(
-        key: _claveForm,
-        child: SingleChildScrollView(
+  Widget build(BuildContext context) => SingleChildScrollView(
+        child: Form(
+          key: formKey,
           child: Column(
             children: <Widget>[
               Container(
@@ -73,12 +75,8 @@ class _LoginState extends State<SignUpScreen> {
                       height: 20.0,
                     ),
                     TextFormField(
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Ingresar un correo electronico';
-                        }
-                        return null;
-                      },
+                      textInputAction: TextInputAction.next,
+                      controller: emailController,
                       decoration: const InputDecoration(
                         hintText: 'Email',
                         prefixIcon: Icon(
@@ -86,18 +84,19 @@ class _LoginState extends State<SignUpScreen> {
                           color: Colors.black,
                         ),
                       ),
-                      controller: emailController,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (email) =>
+                          email != null && !EmailValidator.validate(email)
+                              ? 'Ingrese un email valido'
+                              : null,
                     ),
                     const SizedBox(
                       height: 20.0,
                     ),
                     TextFormField(
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Ingresar su contraseña';
-                        }
-                        return null;
-                      },
+                      obscureText: true,
+                      controller: passwordController,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         hintText: 'Password',
                         prefixIcon: Icon(
@@ -105,25 +104,17 @@ class _LoginState extends State<SignUpScreen> {
                           color: Colors.black,
                         ),
                       ),
-                      obscureText: true,
-                      controller: passwordController,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      validator: (value) => value != null && value.length < 6
+                          ? 'Ingrese min. 6 caracteres'
+                          : null,
                     ),
                     const SizedBox(
                       height: 25.0,
                     ),
                     ElevatedButton.icon(
-                      onPressed: () {
-                        if (_claveForm.currentState!.validate()) {
-                          // Scaffold.of(context).showSnackBar(
-                          //   const SnackBar(
-                          //     content: Text("Procesando Datos"),
-                          //   ),
-                          // );
-                        }
-                        signUp();
-                        MainScreen();
-                      },
-                      label: const Text("Login"),
+                      onPressed: signUp,
+                      label: const Text("Sign Up"),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.black,
                         fixedSize: const Size(220, 50),
@@ -136,6 +127,8 @@ class _LoginState extends State<SignUpScreen> {
                     const SizedBox(
                       height: 20.0,
                     ),
+                    // ignore: deprecated_member_use
+
                     RichText(
                       text: TextSpan(
                         style: const TextStyle(
@@ -143,12 +136,12 @@ class _LoginState extends State<SignUpScreen> {
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
-                        text: 'Ya tienes una cuenta? ',
+                        text: 'No tienes una cuenta? ',
                         children: [
                           TextSpan(
                             recognizer: TapGestureRecognizer()
                               ..onTap = widget.onClickedSignIn,
-                            text: 'Login In',
+                            text: 'Log In',
                             style: TextStyle(
                               decoration: TextDecoration.underline,
                               color: Theme.of(context).colorScheme.secondary,
@@ -163,11 +156,12 @@ class _LoginState extends State<SignUpScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
+      );
 
   Future signUp() async {
+    final isValid = formKey.currentState!.validate();
+    if (!isValid) return;
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -184,7 +178,7 @@ class _LoginState extends State<SignUpScreen> {
     } on FirebaseAuthException catch (e) {
       print(e);
 
-      // ShowConfirm.showSnackBar(e.message);
+      //Utils.showSnackBar(e.message);
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);

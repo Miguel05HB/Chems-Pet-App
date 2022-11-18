@@ -1,23 +1,23 @@
-import 'dart:ui';
-
 import 'package:chems_pet_app/main.dart';
+import 'package:chems_pet_app/screens/forgot_password.dart';
+import 'package:chems_pet_app/screens/show_confirm.dart';
+import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
+class LoginWidget extends StatefulWidget {
   final VoidCallback onClickedSignUp;
 
-  const Login({
+  const LoginWidget({
     Key? key,
     required this.onClickedSignUp,
   }) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginWidget> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<LoginWidget> {
   final _claveForm = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -122,9 +122,9 @@ class _LoginState extends State<Login> {
                           //   ),
                           // );
                         }
-                        LoginGmail();
+                        signIn();
                       },
-                      label: const Text("Login"),
+                      label: const Text("Sign In"),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.black,
                         fixedSize: const Size(220, 50),
@@ -137,8 +137,24 @@ class _LoginState extends State<Login> {
                     const SizedBox(
                       height: 20.0,
                     ),
-                    // ignore: deprecated_member_use
-
+                    GestureDetector(
+                      child: Text(
+                        'Olvidaste tu contraseña?',
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Theme.of(context).colorScheme.secondary,
+                          fontSize: 20,
+                        ),
+                      ),
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const ForgotPasswordPage(),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
                     RichText(
                       text: TextSpan(
                         style: const TextStyle(
@@ -146,7 +162,7 @@ class _LoginState extends State<Login> {
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
-                        text: 'No tienes una cuenta? ',
+                        text: 'Ya tienes una cuenta? ',
                         children: [
                           TextSpan(
                             recognizer: TapGestureRecognizer()
@@ -170,10 +186,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Future LoginGmail() async {
-    final isValid = _claveForm.currentState!.validate();
-    if (isValid) return;
-
+  Future signIn() async {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -181,7 +194,6 @@ class _LoginState extends State<Login> {
         child: CircularProgressIndicator(),
       ),
     );
-
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
@@ -189,6 +201,8 @@ class _LoginState extends State<Login> {
       );
     } on FirebaseAuthException catch (e) {
       print(e);
+
+      //Utils.showSnackBar(e.message);
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);

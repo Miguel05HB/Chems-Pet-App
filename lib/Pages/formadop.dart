@@ -1,15 +1,13 @@
-import 'package:chems_pet_app/classes/slider_sections.dart';
+import 'package:chems_pet_app/Pages/textformadopt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+class FormAdopt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Chems Pet"),
+        title: const Text("Adoptame"),
         toolbarHeight: 65,
         elevation: 0.0,
         flexibleSpace: Container(
@@ -27,7 +25,7 @@ class HomeScreen extends StatelessWidget {
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       backgroundColor: const Color(0xffF5F5CA),
-      body: const SliderSections(),
+      body: TextFormAdopt(),
     );
   }
 }
