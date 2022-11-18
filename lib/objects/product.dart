@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class Product {
   final String image, title, description;
-  final int price, size, id;
+  final int size, id;
+  final double price;
   final Color color;
 
   Product({
@@ -16,12 +17,12 @@ class Product {
   });
 }
 
-List<Product> products = [
+final products = [
   Product(
     id: 1,
     title: "Plato Rosado",
     image: "assets/Images-products/image1.png",
-    price: 25,
+    price: 25.50,
     description: "Especialmente para Mascotas, con diseño atractivo",
     size: 12,
     color: const Color(0xFF3D82AE),
@@ -30,7 +31,7 @@ List<Product> products = [
     id: 2,
     title: "Plato Anaranjado",
     image: "assets/Images-products/image2.png",
-    price: 25,
+    price: 25.80,
     description: "Especialmente para Mascotas, con diseño atractivo",
     size: 12,
     color: const Color(0xFF13A581),
@@ -39,7 +40,7 @@ List<Product> products = [
     id: 3,
     title: "Plato Celeste",
     image: "assets/Images-products/image3.png",
-    price: 25,
+    price: 25.90,
     description: "Especialmente para Mascotas, con diseño atractivo",
     size: 12,
     color: const Color(0xFFAEAA3D),
@@ -48,7 +49,7 @@ List<Product> products = [
     id: 4,
     title: "Hueso de Ule",
     image: "assets/Images-products/image4.png",
-    price: 18,
+    price: 18.20,
     description: "Especialmente para Mascotas, con diseño atractivo",
     size: 12,
     color: const Color.fromARGB(255, 84, 61, 174),
@@ -57,7 +58,7 @@ List<Product> products = [
     id: 5,
     title: "Hueso de Juguete",
     image: "assets/Images-products/image5.png",
-    price: 28,
+    price: 28.30,
     description: "Especialmente para Mascotas, con diseño atractivo",
     size: 12,
     color: const Color.fromARGB(255, 174, 82, 61),
@@ -66,7 +67,7 @@ List<Product> products = [
     id: 6,
     title: "Hueso de Juguete",
     image: "assets/Images-products/image6.png",
-    price: 28,
+    price: 28.90,
     description: "Especialmente para Mascotas, con diseño atractivo",
     size: 12,
     color: const Color.fromARGB(255, 108, 61, 174),
@@ -75,7 +76,7 @@ List<Product> products = [
     id: 7,
     title: "Hueso",
     image: "assets/Images-products/image7.png",
-    price: 15,
+    price: 15.50,
     description: "Especialmente para Mascotas, con diseño atractivo",
     size: 12,
     color: const Color.fromARGB(255, 159, 174, 61),
@@ -84,7 +85,7 @@ List<Product> products = [
     id: 8,
     title: "Hueso",
     image: "assets/Images-products/image8.png",
-    price: 15,
+    price: 15.30,
     description: "Especialmente para Mascotas, con diseño atractivo",
     size: 12,
     color: const Color.fromARGB(255, 174, 61, 78),
@@ -93,7 +94,7 @@ List<Product> products = [
     id: 9,
     title: "Pelotas con luces",
     image: "assets/imgs/p5.png",
-    price: 10,
+    price: 10.60,
     description: "para iluminar y decorar",
     size: 12,
     color: const Color(0xFF4F12C1),
@@ -102,7 +103,7 @@ List<Product> products = [
     id: 10,
     title: "Motor de agua small",
     image: "assets/imgs/p6.png",
-    price: 40,
+    price: 40.90,
     description: "para transferir agua a pesceras chicas",
     size: 12,
     color: const Color(0xFFC7369D),
@@ -111,7 +112,7 @@ List<Product> products = [
     id: 11,
     title: "Motor de agua medium",
     image: "assets/imgs/p7.png",
-    price: 60,
+    price: 60.90,
     description: "para transferir agua a pesceras medianas",
     size: 12,
     color: const Color(0xFF0A4297),
@@ -120,7 +121,7 @@ List<Product> products = [
     id: 12,
     title: "Kit para pescera",
     image: "assets/imgs/p8.png",
-    price: 120,
+    price: 120.40,
     description: "para oxigenar, traferir agua y limpiar",
     size: 12,
     color: const Color(0xFF2C9622),
@@ -129,7 +130,7 @@ List<Product> products = [
     id: 13,
     title: "Pescera con leds",
     image: "assets/imgs/p9.png",
-    price: 150,
+    price: 150.30,
     description: "pescera para la comodidad de tu pez",
     size: 12,
     color: const Color(0xFF949622),
@@ -138,7 +139,7 @@ List<Product> products = [
     id: 14,
     title: "Comida Small fish",
     image: "assets/imgs/p10.png",
-    price: 25,
+    price: 25.20,
     description: "para la mejor alimentacion de tu mascota",
     size: 12,
     color: const Color(0xFF7BCF5D),
@@ -147,7 +148,7 @@ List<Product> products = [
     id: 15,
     title: "Comida Novo Dragon",
     image: "assets/imgs/p11.png",
-    price: 30,
+    price: 30.90,
     description: "para la mejor alimentacion de tu mascota",
     size: 12,
     color: const Color(0xFF32C38A),
@@ -156,7 +157,7 @@ List<Product> products = [
     id: 16,
     title: "Pescera acondicionada",
     image: "assets/imgs/p12.png",
-    price: 200,
+    price: 200.60,
     description: "para la mejor comodidad de tu mascota",
     size: 12,
     color: const Color(0xFF124CB2),

@@ -1,3 +1,4 @@
+import 'package:chems_pet_app/details/components/cartbtn.dart';
 import 'package:chems_pet_app/objects/product.dart';
 import 'package:flutter/material.dart';
 
@@ -40,9 +41,10 @@ class ItemCard extends StatelessWidget {
             ),
           ),
           Text(
-            "\$${product.price}",
+            "S/. ${product.price}",
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
+          cartButton(product: product)
         ],
       ),
     );

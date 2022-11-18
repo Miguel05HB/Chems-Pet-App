@@ -37,7 +37,7 @@ class ProductsPets extends StatelessWidget {
                   children: [
                     const TextSpan(text: "Precio\n"),
                     TextSpan(
-                      text: "\$${product.price}",
+                      text: "S/. ${product.price}",
                       style: Theme.of(context).textTheme.headline4?.copyWith(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),

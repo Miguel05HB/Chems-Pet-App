@@ -1,3 +1,4 @@
+import 'package:chems_pet_app/Pages/formadop.dart';
 import 'package:chems_pet_app/Pages/shop.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +52,7 @@ class SectionAdopt1 extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShopPets()),
+                  MaterialPageRoute(builder: (context) => FormAdopt()),
                 );
               },
               child: const Text(
@@ -109,13 +110,14 @@ class SectionAdopt2 extends StatelessWidget {
             height: 220,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(70, 28.7),
-                  primary: Color.fromARGB(255, 23, 179, 106),
-                  onPrimary: const Color(0xff000000)),
+                minimumSize: const Size(70, 28.7),
+                primary: const Color.fromARGB(255, 23, 179, 106),
+                onPrimary: const Color(0xff000000),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShopPets()),
+                  MaterialPageRoute(builder: (context) => FormAdopt()),
                 );
               },
               child: const Text(
@@ -179,7 +181,7 @@ class SectionAdopt3 extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShopPets()),
+                  MaterialPageRoute(builder: (context) => FormAdopt()),
                 );
               },
               child: const Text(
@@ -243,7 +245,7 @@ class SectionAdopt4 extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShopPets()),
+                  MaterialPageRoute(builder: (context) => FormAdopt()),
                 );
               },
               child: const Text(
@@ -307,7 +309,7 @@ class SectionAdopt5 extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShopPets()),
+                  MaterialPageRoute(builder: (context) => FormAdopt()),
                 );
               },
               child: const Text(
@@ -371,7 +373,7 @@ class SectionAdopt6 extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShopPets()),
+                  MaterialPageRoute(builder: (context) => FormAdopt()),
                 );
               },
               child: const Text(

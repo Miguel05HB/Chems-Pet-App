@@ -14,15 +14,6 @@ class DetailsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: product.color,
         elevation: 0,
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.shopping_cart_rounded,
-              size: 30,
-            ),
-          ),
-        ],
       ),
     );
   }

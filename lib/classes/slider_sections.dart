@@ -43,7 +43,7 @@ class SliderSections extends StatelessWidget {
                     Radius.circular(15),
                   ),
                   image: DecorationImage(
-                      image: AssetImage("assets/Images/slider4.jpg"),
+                      image: AssetImage("assets/Images/slider2.jpg"),
                       fit: BoxFit.fill),
                 ),
               ),
